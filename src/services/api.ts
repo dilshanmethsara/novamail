@@ -1,5 +1,5 @@
 // Real API service for Nova Mail backend integration
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_URL || (window.location.origin + '/api');
 
 export interface MailtmMessage {
   id: string;
@@ -75,7 +75,7 @@ class NovaMailAPI {
 
   // Generate new temporary email account
   async generateEmail(): Promise<ApiResponse<EmailAccount>> {
-    return this.request('/generate-email', {
+    return this.request('/api/generate-email', {
       method: 'POST',
     });
   }
@@ -90,7 +90,7 @@ class NovaMailAPI {
 
   // Get inbox messages
   async getMessages(email: string, password: string): Promise<ApiResponse<{ 'hydra:member': MailtmMessage[] }>> {
-    return this.request('/messages', {
+    return this.request('/api/messages', {
       method: 'POST',
       body: JSON.stringify({ email, password }),
     });
@@ -98,7 +98,7 @@ class NovaMailAPI {
 
   // Get single message by ID
   async getMessage(email: string, password: string, messageId: string): Promise<ApiResponse<MailtmMessage>> {
-    return this.request('/message', {
+    return this.request('/api/message', {
       method: 'POST',
       body: JSON.stringify({ email, password, messageId }),
     });
