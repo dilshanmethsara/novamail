@@ -43,3 +43,5 @@ FRONTEND_INTEGRATION_COMPLETE.md
 # Lock files (keep one)
 bun.lock
 bun.lockb
+
+.vercel

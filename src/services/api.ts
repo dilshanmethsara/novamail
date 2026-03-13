@@ -1,5 +1,9 @@
 // Real API service for Nova Mail backend integration
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_URL || (window.location.origin + '/api');
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_URL || (window.location.origin);
+
+console.log('🔍 API Base URL:', API_BASE_URL);
+console.log('🔍 Environment VITE_API_BASE_URL:', import.meta.env.VITE_API_BASE_URL);
+console.log('🔍 Environment VITE_API_URL:', import.meta.env.VITE_API_URL);
 
 export interface MailtmMessage {
   id: string;
